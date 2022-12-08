@@ -23,6 +23,9 @@ class SendToPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final titles = ["Bola Jegede", "John Cole", "Friday Pronto", "Sprouse Crane", "Collin Grace",];
+
     return Container(
       child: Column(
         children: [
@@ -30,6 +33,7 @@ class SendToPage extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
+          recentActivity(imageUrl, name, "500", titles,)
         ],
       ),
     );
@@ -276,7 +280,7 @@ Widget headerWidget(String name, String amount, String saving) {
 // TODO: Once you are bac fix this code
 
 Widget recentActivity(
-  List activity,
+  //int activity,
   String imageUrl,
   String name,
   String amount,
@@ -285,53 +289,61 @@ Widget recentActivity(
   String subtitles = "Payment accepted";
   return Column(
     children: [
-      const Text(
-        "Recent Activity",
-        style: TextStyle(
-          color: Colors.black,
-          fontWeight: FontWeight.bold,
+      const Padding(
+        padding: EdgeInsets.only(left: 30),
+        child: Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+                  "Recent Activity",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+          ),
         ),
       ),
       const SizedBox(
         height: 20,
       ),
-      Container(
-        decoration: BoxDecoration(
-          color: Colors.grey.shade400,
-          borderRadius: BorderRadius.circular(25),
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Container(
+          height: 400,
+          decoration: BoxDecoration(
+            color: Colors.grey.shade400.withOpacity(0.05),
+            borderRadius: BorderRadius.circular(25),
+          ),
+          child: ListView.builder(
+              itemCount: 5,
+              itemBuilder: (context, index) {
+                return ListTile(
+                    title: Text(
+                      titles[index],
+                      style: const TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
+                    subtitle: Text(
+                      subtitles,
+                      style: const TextStyle(
+                        color: Colors.grey,
+                      ),
+                    ),
+                    leading: CircleAvatar(
+                      backgroundImage: AssetImage(
+                        imageUrl,
+                      ),
+                    ),
+                    trailing: Text(
+                      "USD $amount",
+                      style: const TextStyle(
+                        color: Colors.green,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                );
+              }),
         ),
-        child: ListView.builder(
-            itemCount: activity.length,
-            itemBuilder: (context, index) {
-              return Card(
-                child: ListTile(
-                  title: Text(
-                    titles[index],
-                    style: const TextStyle(
-                      color: Colors.black,
-                    ),
-                  ),
-                  subtitle: Text(
-                    subtitles,
-                    style: const TextStyle(
-                      color: Colors.grey,
-                    ),
-                  ),
-                  leading: CircleAvatar(
-                    backgroundImage: AssetImage(
-                      imageUrl,
-                    ),
-                  ),
-                  trailing: Text(
-                    "USD $amount",
-                    style: const TextStyle(
-                      color: Colors.green,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              );
-            }),
       ),
     ],
   );
