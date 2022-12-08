@@ -26,8 +26,10 @@ class SendToPage extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          //headerWidget(name, balance, saving),
           header(imageUrl, name, balance, saving, activity, spent, income),
+          const SizedBox(
+            height: 10,
+          ),
         ],
       ),
     );
@@ -43,78 +45,85 @@ Widget header(
   String spent,
   String income,
 ) {
-  return Container(
-    height: 250,
-    decoration: BoxDecoration(
-      image: DecorationImage(
-        image: AssetImage(imageUrl),
-        colorFilter: ColorFilter.mode(
-          Colors.black.withOpacity(0.35),
-          BlendMode.multiply,
-        ),
-        fit: BoxFit.cover,
-      ),
-    ),
+  return SizedBox(
+    height: 350,
     child: Stack(
       children: [
-        Align(
-          alignment: Alignment.center,
-          child: Column(
+        Container(
+          height: 250,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(imageUrl),
+              colorFilter: ColorFilter.mode(
+                Colors.black.withOpacity(0.35),
+                BlendMode.multiply,
+              ),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Stack(
             children: [
-              const SizedBox(
-                height: 5,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.waving_hand,
-                    color: Colors.orangeAccent[200],
-                  ),
-                  const SizedBox(
-                    width: 4,
-                  ),
-                  Text(
-                    "Hello, $name!",
-                    style: const TextStyle(color: Colors.white),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              Center(
-                child: Text(
-                  "\$$balance",
-                  style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              Center(
-                child: Text(
-                  "Your savings grew $savings% from last month",
-                  style: const TextStyle(
-                    color: Colors.white,
-                  ),
+              Align(
+                alignment: Alignment.center,
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 60,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.waving_hand,
+                          color: Colors.orangeAccent[200],
+                        ),
+                        const SizedBox(
+                          width: 4,
+                        ),
+                        Text(
+                          "Hello, $name!",
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Center(
+                      child: Text(
+                        "\$$balance",
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Center(
+                      child: Text(
+                        "Your savings grew $savings% from last month",
+                        style: const TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
           ),
         ),
         Positioned(
-          bottom: -10,
+          bottom: 30,
           left: 40,
           child: Align(
             alignment: Alignment.bottomCenter,
             child: Container(
               padding: const EdgeInsets.all(10),
               width: 320,
-              height: 80,
+              height: 100,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(15),
@@ -146,12 +155,13 @@ Widget header(
                         "Activity",
                         style: TextStyle(
                           color: Colors.grey[400],
-                          fontSize: 12,
+                          fontSize: 15,
                         ),
                       ),
                     ],
                   ),
                   Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(
                         Icons.outbound_outlined,
@@ -174,12 +184,13 @@ Widget header(
                         "Spent",
                         style: TextStyle(
                           color: Colors.grey[400],
-                          fontSize: 12,
+                          fontSize: 15,
                         ),
                       ),
                     ],
                   ),
                   Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(
                         Icons.call_received_outlined,
@@ -202,7 +213,7 @@ Widget header(
                         "Income",
                         style: TextStyle(
                           color: Colors.grey[400],
-                          fontSize: 12,
+                          fontSize: 15,
                         ),
                       ),
                     ],
@@ -259,5 +270,69 @@ Widget headerWidget(String name, String amount, String saving) {
         ),
       ],
     ),
+  );
+}
+
+// TODO: Once you are bac fix this code
+
+Widget recentActivity(
+  List activity,
+  String imageUrl,
+  String name,
+  String amount,
+  List titles,
+) {
+  String subtitles = "Payment accepted";
+  return Column(
+    children: [
+      const Text(
+        "Recent Activity",
+        style: TextStyle(
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      const SizedBox(
+        height: 20,
+      ),
+      Container(
+        decoration: BoxDecoration(
+          color: Colors.grey.shade400,
+          borderRadius: BorderRadius.circular(25),
+        ),
+        child: ListView.builder(
+            itemCount: activity.length,
+            itemBuilder: (context, index) {
+              return Card(
+                child: ListTile(
+                  title: Text(
+                    titles[index],
+                    style: const TextStyle(
+                      color: Colors.black,
+                    ),
+                  ),
+                  subtitle: Text(
+                    subtitles,
+                    style: const TextStyle(
+                      color: Colors.grey,
+                    ),
+                  ),
+                  leading: CircleAvatar(
+                    backgroundImage: AssetImage(
+                      imageUrl,
+                    ),
+                  ),
+                  trailing: Text(
+                    "USD $amount",
+                    style: const TextStyle(
+                      color: Colors.green,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              );
+            }),
+      ),
+    ],
   );
 }

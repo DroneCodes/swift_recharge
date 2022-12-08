@@ -15,12 +15,12 @@ class _BottomNavBarState extends State<BottomNavBar> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.blue[300],
-          title: Text(titles[currentIndex], style: const TextStyle(color: Colors.black),),
-          centerTitle: true,
-        ),
-        drawer: const NavigationDrawer(),
+        // appBar: AppBar(
+        //   backgroundColor: Colors.blue[300],
+        //   title: Text(titles[currentIndex], style: const TextStyle(color: Colors.black),),
+        //   centerTitle: true,
+        // ),
+        // drawer: const NavigationDrawer(),
         body: Container(
           child: pages[currentIndex],
         ),
@@ -32,11 +32,14 @@ class _BottomNavBarState extends State<BottomNavBar> {
             currentIndex = index;
           }),
           currentIndex: currentIndex,
-            items: const [
-              BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-              BottomNavigationBarItem(icon: Icon(Icons.send_outlined), label: "Send"),
-              BottomNavigationBarItem(icon: Icon(Icons.add_box_sharp), label: "Add"),
-            ],),
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.send_outlined), label: "Send"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.add_box_sharp), label: "Add"),
+          ],
+        ),
       ),
     );
   }
