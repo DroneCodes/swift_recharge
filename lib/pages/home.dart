@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final titles = ["Bola Jegede", "John Cole", "Friday Pronto", "Sprouse Crane", "Collin Grace",];
+    final titles = ["Bola Jegede", "John Cole", "Friday Pronto", "Sprouse Crane", "Collin Grace", "Fola Bash", "Cynthia Thompson", "Julian Alba"];
 
     return Container(
       child: Column(
@@ -314,7 +314,7 @@ Widget recentActivity(
             borderRadius: BorderRadius.circular(25),
           ),
           child: ListView.builder(
-              itemCount: 5,
+              itemCount: 8,
               itemBuilder: (context, index) {
                 return ListTile(
                     title: Text(

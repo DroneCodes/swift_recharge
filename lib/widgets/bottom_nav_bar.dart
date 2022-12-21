@@ -11,6 +11,7 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   int currentIndex = 1;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -33,9 +34,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
           }),
           currentIndex: currentIndex,
           items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
             BottomNavigationBarItem(
                 icon: Icon(Icons.send_outlined), label: "Send"),
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
             BottomNavigationBarItem(
                 icon: Icon(Icons.add_box_sharp), label: "Add"),
           ],
