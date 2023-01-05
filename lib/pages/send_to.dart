@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:swift_recharge/pages/pick_network.dart';
 import 'package:swift_recharge/widgets/button_widget.dart';
 
 import '../widgets/number_button.dart';
@@ -41,7 +42,7 @@ class _SendToPageState extends State<SendToPage> {
                     width: 0,
                   ),
                   Text(
-                    "Send to",
+                    "Recharge For",
                     style: TextStyle(
                         color: Colors.black, fontWeight: FontWeight.bold),
                   ),
@@ -216,12 +217,14 @@ class _SendToPageState extends State<SendToPage> {
                                       '${textEditingController.text}0';
                                   moveTextCursorPosition();
                                 }),
-                            ElevatedButton(onPressed: () {},
+                            ElevatedButton(
+                              onPressed: () {},
                               style: ElevatedButton.styleFrom(
                                 primary: Colors.white,
                                 fixedSize: const Size(70, 70),
                                 shape: const CircleBorder(),
-                              ), child: Image.asset("assets/delete.png"),
+                              ),
+                              child: Image.asset("assets/delete.png"),
                             ),
                           ],
                         ),
@@ -231,7 +234,16 @@ class _SendToPageState extends State<SendToPage> {
                     const SizedBox(
                       height: 30,
                     ),
-                    ButtonWidget(text: "Continue", onPress: () {}, width: 300,),
+                    ButtonWidget(
+                      text: "Continue",
+                      onPress: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const NetworkPage()));
+                      },
+                      width: 300,
+                    ),
                   ],
                 ),
               ),
@@ -242,4 +254,3 @@ class _SendToPageState extends State<SendToPage> {
     );
   }
 }
-

@@ -120,6 +120,7 @@ Widget header(
           ),
         ),
         Positioned(
+          right: 40,
           bottom: 30,
           left: 40,
           child: Align(
