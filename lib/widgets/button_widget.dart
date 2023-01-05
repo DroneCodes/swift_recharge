@@ -16,7 +16,7 @@ class ButtonWidget extends StatelessWidget {
           color: Colors.blue[400],
           borderRadius: BorderRadius.circular(20),
         ),
-        height: 65,
+        height: 60,
         width: width,
         padding: const EdgeInsets.symmetric(horizontal: 12),
         alignment: Alignment.center,

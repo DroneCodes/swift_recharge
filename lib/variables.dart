@@ -12,3 +12,4 @@ List pages = [
 final selectedIcon = Colors.blue[300];
 final unSelectedIcon = Colors.blue[100];
 const textColor = Colors.black;
+final backgroundColor = Colors.white.withOpacity(0.45);
