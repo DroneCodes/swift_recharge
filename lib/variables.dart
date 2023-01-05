@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:swift_recharge/pages/add.dart';
 import 'package:swift_recharge/pages/send_to.dart';
 import 'package:swift_recharge/pages/home.dart';
+import 'package:swift_recharge/pages/startup_page.dart';
 
 List pages = [
   const SendToPage(),
   const HomePage(),
-  const AddToPage(),
+  const StartupPage(),
 ];
 final selectedIcon = Colors.blue[300];
 final unSelectedIcon = Colors.blue[100];
