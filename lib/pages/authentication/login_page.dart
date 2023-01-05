@@ -20,11 +20,11 @@ class _LoginPageState extends State<LoginPage> {
       child: Scaffold(
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
-          children: const [
-            SizedBox(
+          children: [
+            const SizedBox(
               height: 20,
             ),
-            Text(
+            const Text(
               "Log in to Scale",
               style: TextStyle(
                 color: Colors.black,
@@ -33,17 +33,30 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
 
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
 
-            Text("Email", style: TextStyle(color: Colors.black,),),
+            const Text("Email", style: TextStyle(color: Colors.black,),),
 
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
 
-            TextFieldInput(textEditingController: , hintText: '', textInputType: TextInputType.text,)
+            TextFieldInput(textEditingController: emailEditingController, hintText: 'youremail@gmail.com', textInputType: TextInputType.text,),
+
+            const SizedBox(
+              height: 20,
+            ),
+
+            const Text("Password", style: TextStyle(color: Colors.black,),),
+
+            const SizedBox(
+              height: 10,
+            ),
+
+            TextFieldInput(textEditingController: emailEditingController, hintText: 'Your Password', textInputType: TextInputType.text,)
+
           ],
         ),
       ),
